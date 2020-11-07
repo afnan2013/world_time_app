@@ -1,4 +1,4 @@
-# world_time_app
+# World_Tme_App using Flutter
 
 A new Flutter application which will give the World Time of different specific locations.
 
