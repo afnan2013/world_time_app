@@ -8,6 +8,7 @@ class WorldTime {
   String time;  // the time in that location
   String flag;  // the flag of that country in that location
   String url;
+  bool isDayTime;
 
   WorldTime({this.location, this.flag, this.url});
 
@@ -18,7 +19,7 @@ class WorldTime {
       // decode the string into json and save it to map
       Map data = jsonDecode(response.body);
       //print(data);
-      String dateTime = data['datetime'];
+      String dateTime = data['utc_datetime'];
       String offset = data['utc_offset'].substring(1,3);
 
       //print('$dateTime - $offset');
@@ -27,8 +28,9 @@ class WorldTime {
       DateTime now = DateTime.parse(dateTime);
       //print(now);
       now = now.add(Duration(hours: int.parse(offset)));
-      //print(now);
+      //print('um here $now');
 
+      isDayTime = (now.hour > 6 && now.hour < 19)?true:false;
       // set the time property
       time = DateFormat.jm().format(now);
     }
