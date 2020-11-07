@@ -27,9 +27,10 @@ class WorldTime {
       //create DateTime Object
       DateTime now = DateTime.parse(dateTime);
       //print(now);
+      //print(offset);
       now = now.add(Duration(hours: int.parse(offset)));
       //print('um here $now');
-
+      print(now.hour);
       isDayTime = (now.hour > 6 && now.hour < 19)?true:false;
       // set the time property
       time = DateFormat.jm().format(now);
